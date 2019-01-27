@@ -14,4 +14,4 @@ Imagining: being able to put in a name before registering, being able to collect
 
 At the moment, it exposes some of the weakness/delays in WebSocket reliability... just using bare wire protocol, though, so maybe a fancier library can handle the inputs better.
 
-Only runs on a Mac out of the box, but that's just because there's only an Xcode project. The code and third-party libraries are fairly portable.
+Only runs on a Mac out of the box, but that's just because there's only an Xcode project. The code and third-party libraries are fairly portable. (I've had some trouble getting Windows to pick the correct IP address, though...)
