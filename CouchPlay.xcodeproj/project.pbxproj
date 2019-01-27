@@ -22,11 +22,15 @@
 		3455A6B21EC4DAA6000057E4 /* vulkan.c in Sources */ = {isa = PBXBuildFile; fileRef = 3455A6A51EC4DAA6000057E4 /* vulkan.c */; };
 		3455A6B31EC4DAA7000057E4 /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = 3455A6A61EC4DAA6000057E4 /* window.c */; };
 		3455A6B41EC4DB8F000057E4 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3455A6961EC4DA71000057E4 /* libglfw.a */; };
+		348B4C9F21FD6F6300FDD235 /* qrcodegen.c in Sources */ = {isa = PBXBuildFile; fileRef = 348B4C9E21FD6F6300FDD235 /* qrcodegen.c */; };
+		348B4CA021FD6F8700FDD235 /* libnayuki.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 348B4C9C21FD6F3000FDD235 /* libnayuki.a */; };
 		349C53E51EC4D6CB008D42C6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345D937D1EC4C47D003B7C63 /* main.cpp */; };
 		349C53E71EC4D6FC008D42C6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345D93DC1EC4C53B003B7C63 /* OpenGL.framework */; };
 		349C53E81EC4D700008D42C6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345D93E21EC4C54C003B7C63 /* Cocoa.framework */; };
 		349C53E91EC4D707008D42C6 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345D93E01EC4C543003B7C63 /* IOKit.framework */; };
 		349C53EA1EC4D70D008D42C6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345D93DE1EC4C540003B7C63 /* CoreVideo.framework */; };
+		349DA41221FD64180038A877 /* libcivetweb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 349DA41121FD63E30038A877 /* libcivetweb.a */; };
+		349DA41521FD64D60038A877 /* civetweb.c in Sources */ = {isa = PBXBuildFile; fileRef = 349DA41421FD64D60038A877 /* civetweb.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +54,16 @@
 		345D93DE1EC4C540003B7C63 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		345D93E01EC4C543003B7C63 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		345D93E21EC4C54C003B7C63 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		348B4C9021FD668700FDD235 /* handle_form.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = handle_form.inl; path = "lib/civetweb-1.11/src/handle_form.inl"; sourceTree = "<group>"; };
+		348B4C9121FD668700FDD235 /* sha1.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sha1.inl; path = "lib/civetweb-1.11/src/sha1.inl"; sourceTree = "<group>"; };
+		348B4C9221FD668700FDD235 /* md5.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = md5.inl; path = "lib/civetweb-1.11/src/md5.inl"; sourceTree = "<group>"; };
+		348B4C9321FD668700FDD235 /* timer.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = timer.inl; path = "lib/civetweb-1.11/src/timer.inl"; sourceTree = "<group>"; };
+		348B4C9C21FD6F3000FDD235 /* libnayuki.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libnayuki.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		348B4C9E21FD6F6300FDD235 /* qrcodegen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qrcodegen.c; path = "lib/nayuki-1.4.0/qrcodegen.c"; sourceTree = "<group>"; };
 		349C53B21EC4D6B9008D42C6 /* CouchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349C53C21EC4D6B9008D42C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = platform/macOS/Info.plist; sourceTree = SOURCE_ROOT; };
+		349DA41121FD63E30038A877 /* libcivetweb.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcivetweb.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		349DA41421FD64D60038A877 /* civetweb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = civetweb.c; path = "lib/civetweb-1.11/src/civetweb.c"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,15 +74,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		348B4C9721FD6F3000FDD235 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		349C53AF1EC4D6B9008D42C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				348B4CA021FD6F8700FDD235 /* libnayuki.a in Frameworks */,
+				349DA41221FD64180038A877 /* libcivetweb.a in Frameworks */,
 				3455A6B41EC4DB8F000057E4 /* libglfw.a in Frameworks */,
 				349C53EA1EC4D70D008D42C6 /* CoreVideo.framework in Frameworks */,
 				349C53E91EC4D707008D42C6 /* IOKit.framework in Frameworks */,
 				349C53E81EC4D700008D42C6 /* Cocoa.framework in Frameworks */,
 				349C53E71EC4D6FC008D42C6 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		349DA40C21FD63E30038A877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +108,8 @@
 		3455A6901EC4DA41000057E4 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				348B4C9D21FD6F5400FDD235 /* nayuki */,
+				349DA41321FD64BC0038A877 /* civetweb */,
 				3455A6911EC4DA4A000057E4 /* glfw */,
 			);
 			name = lib;
@@ -121,6 +151,8 @@
 			children = (
 				349C53B21EC4D6B9008D42C6 /* CouchPlay.app */,
 				3455A6961EC4DA71000057E4 /* libglfw.a */,
+				349DA41121FD63E30038A877 /* libcivetweb.a */,
+				348B4C9C21FD6F3000FDD235 /* libnayuki.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +176,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		348B4C9D21FD6F5400FDD235 /* nayuki */ = {
+			isa = PBXGroup;
+			children = (
+				348B4C9E21FD6F6300FDD235 /* qrcodegen.c */,
+			);
+			name = nayuki;
+			sourceTree = "<group>";
+		};
 		349C53B31EC4D6B9008D42C6 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,10 +194,36 @@
 			path = platform/macOS;
 			sourceTree = "<group>";
 		};
+		349DA41321FD64BC0038A877 /* civetweb */ = {
+			isa = PBXGroup;
+			children = (
+				349DA41421FD64D60038A877 /* civetweb.c */,
+				348B4C9021FD668700FDD235 /* handle_form.inl */,
+				348B4C9221FD668700FDD235 /* md5.inl */,
+				348B4C9121FD668700FDD235 /* sha1.inl */,
+				348B4C9321FD668700FDD235 /* timer.inl */,
+			);
+			name = civetweb;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
 		3455A6941EC4DA71000057E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		348B4C9821FD6F3000FDD235 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		349DA40D21FD63E30038A877 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -184,6 +250,23 @@
 			productReference = 3455A6961EC4DA71000057E4 /* libglfw.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		348B4C9421FD6F3000FDD235 /* nayuki */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 348B4C9921FD6F3000FDD235 /* Build configuration list for PBXNativeTarget "nayuki" */;
+			buildPhases = (
+				348B4C9521FD6F3000FDD235 /* Sources */,
+				348B4C9721FD6F3000FDD235 /* Frameworks */,
+				348B4C9821FD6F3000FDD235 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = nayuki;
+			productName = glfw;
+			productReference = 348B4C9C21FD6F3000FDD235 /* libnayuki.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		349C53B11EC4D6B9008D42C6 /* CouchPlay */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 349C53E41EC4D6B9008D42C6 /* Build configuration list for PBXNativeTarget "CouchPlay" */;
@@ -201,6 +284,23 @@
 			productReference = 349C53B21EC4D6B9008D42C6 /* CouchPlay.app */;
 			productType = "com.apple.product-type.application";
 		};
+		349DA3FD21FD63E30038A877 /* civetweb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 349DA40E21FD63E30038A877 /* Build configuration list for PBXNativeTarget "civetweb" */;
+			buildPhases = (
+				349DA3FE21FD63E30038A877 /* Sources */,
+				349DA40C21FD63E30038A877 /* Frameworks */,
+				349DA40D21FD63E30038A877 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = civetweb;
+			productName = glfw;
+			productReference = 349DA41121FD63E30038A877 /* libcivetweb.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,10 +315,16 @@
 						DevelopmentTeam = CFJYV723M9;
 						ProvisioningStyle = Automatic;
 					};
+					348B4C9421FD6F3000FDD235 = {
+						DevelopmentTeam = CFJYV723M9;
+					};
 					349C53B11EC4D6B9008D42C6 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CFJYV723M9;
 						ProvisioningStyle = Automatic;
+					};
+					349DA3FD21FD63E30038A877 = {
+						DevelopmentTeam = CFJYV723M9;
 					};
 				};
 			};
@@ -237,6 +343,8 @@
 			targets = (
 				349C53B11EC4D6B9008D42C6 /* CouchPlay */,
 				3455A6951EC4DA71000057E4 /* glfw */,
+				349DA3FD21FD63E30038A877 /* civetweb */,
+				348B4C9421FD6F3000FDD235 /* nayuki */,
 			);
 		};
 /* End PBXProject section */
@@ -273,11 +381,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		348B4C9521FD6F3000FDD235 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				348B4C9F21FD6F6300FDD235 /* qrcodegen.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		349C53AE1EC4D6B9008D42C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				349C53E51EC4D6CB008D42C6 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		349DA3FE21FD63E30038A877 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349DA41521FD64D60038A877 /* civetweb.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,13 +552,62 @@
 			};
 			name = Release;
 		};
+		348B4C9A21FD6F3000FDD235 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"WITH_DEBUG=1",
+					"WITH_LUA=0",
+					"WITH_CPP=1",
+					"WITH_IPV6=1",
+					"WITH_WEBSOCKET=0",
+					"WITH_EXPERIMENTAL=0",
+					"WITH_SERVER_STATS=0",
+				);
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = "lib/nayuki-1.4.0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		348B4C9B21FD6F3000FDD235 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"WITH_LUA=0",
+					"WITH_CPP=1",
+					"WITH_IPV6=1",
+					"WITH_WEBSOCKET=0",
+					"WITH_EXPERIMENTAL=0",
+					"WITH_SERVER_STATS=0",
+				);
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = "lib/nayuki-1.4.0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		349C53C31EC4D6B9008D42C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CFJYV723M9;
-				HEADER_SEARCH_PATHS = "lib/glfw-3.2.1/include";
+				HEADER_SEARCH_PATHS = (
+					"lib/glfw-3.2.1/include",
+					"lib/civetweb-1.11/include",
+					"lib/nayuki-1.4.0",
+				);
 				INFOPLIST_FILE = platform/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,10 +620,59 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CFJYV723M9;
-				HEADER_SEARCH_PATHS = "lib/glfw-3.2.1/include";
+				HEADER_SEARCH_PATHS = (
+					"lib/glfw-3.2.1/include",
+					"lib/civetweb-1.11/include",
+					"lib/nayuki-1.4.0",
+				);
 				INFOPLIST_FILE = platform/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		349DA40F21FD63E30038A877 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"WITH_DEBUG=1",
+					"WITH_LUA=0",
+					"WITH_CPP=1",
+					"WITH_IPV6=1",
+					"WITH_WEBSOCKET=0",
+					"WITH_EXPERIMENTAL=0",
+					"WITH_SERVER_STATS=0",
+				);
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = "lib/civetweb-1.11/include";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		349DA41021FD63E30038A877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"WITH_LUA=0",
+					"WITH_CPP=1",
+					"WITH_IPV6=1",
+					"WITH_WEBSOCKET=0",
+					"WITH_EXPERIMENTAL=0",
+					"WITH_SERVER_STATS=0",
+				);
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = "lib/civetweb-1.11/include";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -475,11 +697,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		348B4C9921FD6F3000FDD235 /* Build configuration list for PBXNativeTarget "nayuki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				348B4C9A21FD6F3000FDD235 /* Debug */,
+				348B4C9B21FD6F3000FDD235 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		349C53E41EC4D6B9008D42C6 /* Build configuration list for PBXNativeTarget "CouchPlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				349C53C31EC4D6B9008D42C6 /* Debug */,
 				349C53C41EC4D6B9008D42C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		349DA40E21FD63E30038A877 /* Build configuration list for PBXNativeTarget "civetweb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				349DA40F21FD63E30038A877 /* Debug */,
+				349DA41021FD63E30038A877 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
