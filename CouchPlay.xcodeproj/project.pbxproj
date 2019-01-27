@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3411736221FDF30F00D9EE55 /* web.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3411736021FDF30F00D9EE55 /* web.cpp */; };
+		3411736521FDF66300D9EE55 /* qr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3411736321FDF66300D9EE55 /* qr.cpp */; };
+		3411736821FDF77C00D9EE55 /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3411736621FDF77C00D9EE55 /* display.cpp */; };
+		3411736B21FDF85C00D9EE55 /* actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3411736921FDF85C00D9EE55 /* actor.cpp */; };
 		344C39E51EC4E0B2007F9466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344C39E41EC4E0B2007F9466 /* Assets.xcassets */; };
 		3455A6A71EC4DAA6000057E4 /* cocoa_init.m in Sources */ = {isa = PBXBuildFile; fileRef = 3455A69A1EC4DAA6000057E4 /* cocoa_init.m */; };
 		3455A6A81EC4DAA6000057E4 /* cocoa_joystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 3455A69B1EC4DAA6000057E4 /* cocoa_joystick.m */; };
@@ -34,6 +38,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3411736021FDF30F00D9EE55 /* web.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = web.cpp; sourceTree = "<group>"; };
+		3411736121FDF30F00D9EE55 /* web.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = web.h; sourceTree = "<group>"; };
+		3411736321FDF66300D9EE55 /* qr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = qr.cpp; sourceTree = "<group>"; };
+		3411736421FDF66300D9EE55 /* qr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qr.h; sourceTree = "<group>"; };
+		3411736621FDF77C00D9EE55 /* display.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = display.cpp; sourceTree = "<group>"; };
+		3411736721FDF77C00D9EE55 /* display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = display.h; sourceTree = "<group>"; };
+		3411736921FDF85C00D9EE55 /* actor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = actor.cpp; sourceTree = "<group>"; };
+		3411736A21FDF85C00D9EE55 /* actor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = actor.h; sourceTree = "<group>"; };
 		344C39E41EC4E0B2007F9466 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = platform/macOS/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		3455A6961EC4DA71000057E4 /* libglfw.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglfw.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3455A69A1EC4DAA6000057E4 /* cocoa_init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_init.m; path = "lib/glfw-3.2.1/src/cocoa_init.m"; sourceTree = "<group>"; };
@@ -161,6 +173,14 @@
 			isa = PBXGroup;
 			children = (
 				345D937D1EC4C47D003B7C63 /* main.cpp */,
+				3411736021FDF30F00D9EE55 /* web.cpp */,
+				3411736121FDF30F00D9EE55 /* web.h */,
+				3411736321FDF66300D9EE55 /* qr.cpp */,
+				3411736421FDF66300D9EE55 /* qr.h */,
+				3411736621FDF77C00D9EE55 /* display.cpp */,
+				3411736721FDF77C00D9EE55 /* display.h */,
+				3411736921FDF85C00D9EE55 /* actor.cpp */,
+				3411736A21FDF85C00D9EE55 /* actor.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -393,6 +413,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3411736521FDF66300D9EE55 /* qr.cpp in Sources */,
+				3411736221FDF30F00D9EE55 /* web.cpp in Sources */,
+				3411736B21FDF85C00D9EE55 /* actor.cpp in Sources */,
+				3411736821FDF77C00D9EE55 /* display.cpp in Sources */,
 				349C53E51EC4D6CB008D42C6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
