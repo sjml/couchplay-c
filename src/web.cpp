@@ -156,7 +156,7 @@ struct mg_context *ctx;
 std::string StartWebServer() {
     mg_init_library(0);
     const char *options[] = {
-        "document_root", "/Users/shane/Projects/couchplay/web",
+        "document_root", "./web",
         "listening_ports", "8080",
         "websocket_timeout_ms", "3600000",
         "static_file_max_age", "0",
