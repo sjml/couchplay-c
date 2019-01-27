@@ -1,5 +1,7 @@
 # CouchPlay (proof of concept)
 
+([Download the Mac app](https://github.com/sjml/couchplay-c/releases).)
+
 Very ugly quick-and-dirty protoype of a control/registration scheme for couch co-op video games. (Inspired by my thought of "why has nobody reproduced the original [_Crystal Chronicles_](https://en.wikipedia.org/wiki/Final_Fantasy_Crystal_Chronicles) experience using more modern tech?")
 
 The idea is that a group of people bring their smartphones to the TV and each of them becomes a controller. Then the game can push data to each screen independently while also updating the main display for everyone. 
