@@ -1,6 +1,6 @@
 # CouchPlay (proof of concept)
 
-([Download the Mac app](https://github.com/sjml/couchplay-c/releases).)
+([Download the Mac app](https://github.com/sjml/couchplay-c/releases/latest).)
 
 Very ugly quick-and-dirty protoype of a control/registration scheme for couch co-op video games. (Inspired by my thought of "why has nobody reproduced the original [_Crystal Chronicles_](https://en.wikipedia.org/wiki/Final_Fantasy_Crystal_Chronicles) experience using more modern tech?")
 
