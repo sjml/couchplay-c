@@ -5,6 +5,7 @@ html, body {
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
+    touch-action: manipulation;
 }
 
 h1 {
