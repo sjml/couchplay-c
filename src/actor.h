@@ -1,9 +1,13 @@
 #pragma once
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
+#if __APPLE__
+	#pragma clang diagnostic push
+	#pragma clang diagnostic ignored "-Wdocumentation"
+#endif
 #include <GLFW/glfw3.h>
-#pragma clang diagnostic pop
+#if __APPLE__
+	#pragma clang diagnostic pop
+#endif
 
 class Actor {
 public:

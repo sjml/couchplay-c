@@ -1,8 +1,17 @@
 #include "qr.h"
 
+#if __APPLE__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+#endif
+#include <GLFW/glfw3.h>
+#if __APPLE__
+#pragma clang diagnostic pop
+#endif
+
 #include <qrcodegen.h>
 
-GLuint bindQRTexture(std::string textToEncode) {
+unsigned int bindQRTexture(std::string textToEncode) {
     uint8_t qrCode[qrcodegen_BUFFER_LEN_MAX];
     uint8_t tempBuffer[qrcodegen_BUFFER_LEN_MAX];
     
@@ -32,8 +41,8 @@ GLuint bindQRTexture(std::string textToEncode) {
     glGenTextures(1, &texRef);
     glBindTexture(GL_TEXTURE_2D, texRef);
     
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
