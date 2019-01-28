@@ -88,7 +88,7 @@ int WebSocketDataHandler(struct mg_connection* conn, int bits, char* data, size_
     return 1;
 }
 
-void WebSocektCloseHandler(const struct mg_connection* conn, void* cbdata) {
+void WebSocketCloseHandler(const struct mg_connection* conn, void* cbdata) {
     struct mg_context* ctx = mg_get_context(conn);
     struct t_ws_client* client = (t_ws_client*)mg_get_user_connection_data(conn);
     assert(client->conn == conn);
@@ -118,7 +118,7 @@ std::string StartWebServer() {
         exit(EXIT_FAILURE);
     }
 
-    mg_set_websocket_handler(ctx, "/websocket", WebSocketConnectHandler, WebSocketReadyHandler, WebSocketDataHandler, WebSocektCloseHandler, 0);
+    mg_set_websocket_handler(ctx, "/websocket", WebSocketConnectHandler, WebSocketReadyHandler, WebSocketDataHandler, WebSocketCloseHandler, 0);
 
     std::vector<struct mg_server_ports> server_ports(50);
     mg_get_server_ports(ctx, (int)server_ports.size(), &server_ports[0]);
