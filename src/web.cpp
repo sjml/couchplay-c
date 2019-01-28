@@ -50,7 +50,6 @@ void WebSocketReadyHandler(struct mg_connection *conn, void *cbdata) {
     struct t_ws_client* client = (t_ws_client*)mg_get_user_connection_data(conn);
 
     mg_websocket_write(conn, MG_WEBSOCKET_OPCODE_TEXT, text, strlen(text));
-    fprintf(stdout, "Greeting message sent to client.\n");
     assert(client->conn == conn);
     assert(client->state == 1);
 
@@ -99,7 +98,7 @@ void WebSocketCloseHandler(const struct mg_connection* conn, void* cbdata) {
     client->conn = NULL;
     mg_unlock_context(ctx);
 
-    fprintf(stdout, "Client dropped\n\n");
+    fprintf(stdout, "Client dropped\n");
 }
 
 
@@ -109,10 +108,16 @@ std::string StartWebServer() {
     mg_init_library(0);
     const char *options[] = {
         "document_root", "./web",
+#ifdef DEBUG
+        "listening_ports", "8080",
+#else
+        // forces the library to find an open port
         "listening_ports", "0",
+#endif
         "websocket_timeout_ms", "3600000",
         "static_file_max_age", "0",
-        NULL };
+        NULL
+    };
     ctx = mg_start(NULL, 0, options);
     if (ctx == NULL) {
         exit(EXIT_FAILURE);
@@ -152,6 +157,7 @@ std::string StartWebServer() {
     if (found) {
         std::ostringstream output;
         output << "http://" << hostbuffer << ":" << portNumber;
+        std::cout << "Hosting on " << output.str() << std::endl;
         return output.str();
     }
     else {

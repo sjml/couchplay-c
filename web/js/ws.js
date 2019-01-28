@@ -1,3 +1,23 @@
+var connection = null;
+
+//// Used this to test the overall rate at which we could handle
+//// WebSocket messages. The delays seen before seem to have been
+//// due to touch events getting bogged down.
+// var on = false;
+// var delay = 200;
+
+// function toggleSend() {
+//   if (on) {
+//     connection.send('up red');
+//     on = false;
+//   }
+//   else {
+//     connection.send('down red');
+//     on = true;
+//   }
+//   setTimeout(toggleSend, delay);
+// }
+
 function load() {
     function preventDefault(e){
       e.preventDefault();
@@ -5,7 +25,7 @@ function load() {
   document.body.addEventListener('touchmove', preventDefault, { passive: false });
 
   let wsproto = (location.protocol === 'https:') ? 'wss:' : 'ws:';
-  let connection = new WebSocket(
+  connection = new WebSocket(
     wsproto + '//'
     + window.location.host
     + '/websocket');
@@ -36,6 +56,8 @@ function load() {
 
       // playfield.appendChild(red);
       playfield.appendChild(blue);
+
+      // toggleSend();
     }
   }
   connection.onerror = function(e) {
