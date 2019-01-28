@@ -1,6 +1,8 @@
 #include "web.h"
 
 #include <iostream>
+#include <sstream>
+#include <vector>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -26,7 +28,7 @@ int WebSocketConnectHandler(const struct mg_connection *conn, void *cbdata) {
     struct mg_context *ctx = mg_get_context(conn);
     int reject = 1;
     int i;
-    
+
     mg_lock_context(ctx);
     for (i = 0; i < MAX_WS_CLIENTS; i++) {
         if (ws_clients[i].conn == NULL) {
@@ -38,7 +40,7 @@ int WebSocketConnectHandler(const struct mg_connection *conn, void *cbdata) {
         }
     }
     mg_unlock_context(ctx);
-    
+
     fprintf(stdout, "Websocket client %s\n", (reject? "rejected" : "accepted"));
     return reject;
 }
@@ -46,12 +48,12 @@ int WebSocketConnectHandler(const struct mg_connection *conn, void *cbdata) {
 void WebSocketReadyHandler(struct mg_connection *conn, void *cbdata) {
     const char* text = "READY";
     struct t_ws_client* client = (t_ws_client*)mg_get_user_connection_data(conn);
-    
+
     mg_websocket_write(conn, MG_WEBSOCKET_OPCODE_TEXT, text, strlen(text));
     fprintf(stdout, "Greeting message sent to client.\n");
     assert(client->conn == conn);
     assert(client->state == 1);
-    
+
     client->state = 2;
 }
 
@@ -59,7 +61,7 @@ int WebSocketDataHandler(struct mg_connection* conn, int bits, char* data, size_
     struct t_ws_client* client = (t_ws_client*)mg_get_user_connection_data(conn);
     assert(client->conn == conn);
     assert(client->state >= 1);
-    
+
     if ((((unsigned char)bits) & 0x0F) == MG_WEBSOCKET_OPCODE_TEXT) {
         std::string dataString(data);
         GLfloat c[3] = {0.0f, 0.0f, 0.0f};
@@ -82,74 +84,24 @@ int WebSocketDataHandler(struct mg_connection* conn, int bits, char* data, size_
         }
         SetBG(c);
     }
-//
-//    fprintf(stdout, "Websocket got %lu bytes of ", (unsigned long)len);
-//    switch (((unsigned char)bits) & 0x0F) {
-//        case MG_WEBSOCKET_OPCODE_CONTINUATION:
-//            fprintf(stdout, "continuation");
-//            break;
-//        case MG_WEBSOCKET_OPCODE_TEXT:
-//            fprintf(stdout, "text");
-//            break;
-//        case MG_WEBSOCKET_OPCODE_BINARY:
-//            fprintf(stdout, "binary");
-//            break;
-//        case MG_WEBSOCKET_OPCODE_CONNECTION_CLOSE:
-//            fprintf(stdout, "close");
-//            break;
-//        case MG_WEBSOCKET_OPCODE_PING:
-//            fprintf(stdout, "ping");
-//            break;
-//        case MG_WEBSOCKET_OPCODE_PONG:
-//            fprintf(stdout, "pong");
-//            break;
-//        default:
-//            fprintf(stdout, "unknown(%1xh)", ((unsigned char)bits) & 0x0F);
-//            break;
-//    }
-//    fprintf(stdout, "\ndata:");
-//    fwrite(data, len, 1, stdout);
-//    fprintf(stdout, "\n\n");
-    
+
     return 1;
 }
 
-void WebSocektCloseHandler(const struct mg_connection* conn, void* cbdata) {
+void WebSocketCloseHandler(const struct mg_connection* conn, void* cbdata) {
     struct mg_context* ctx = mg_get_context(conn);
     struct t_ws_client* client = (t_ws_client*)mg_get_user_connection_data(conn);
     assert(client->conn == conn);
     assert(client->state >= 1);
-    
+
     mg_lock_context(ctx);
     client->state = 0;
     client->conn = NULL;
     mg_unlock_context(ctx);
-    
+
     fprintf(stdout, "Client dropped\n\n");
 }
 
-void InformWebSockets(struct mg_context *ctx) {
-    static unsigned long cnt = 0;
-    char text[32];
-    size_t textlen;
-    int i;
-    
-    sprintf(text, "%lu", ++cnt);
-    textlen = strlen(text);
-    
-    mg_lock_context(ctx);
-    for (i=0; i < MAX_WS_CLIENTS; i++) {
-        if (ws_clients[i].state == 2) {
-            mg_websocket_write(ws_clients[i].conn, MG_WEBSOCKET_OPCODE_TEXT, text, textlen);
-        }
-    }
-    mg_unlock_context(ctx);
-}
-
-
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
 
 struct mg_context *ctx;
 
@@ -157,27 +109,54 @@ std::string StartWebServer() {
     mg_init_library(0);
     const char *options[] = {
         "document_root", "./web",
-        "listening_ports", "8080",
+        "listening_ports", "0",
         "websocket_timeout_ms", "3600000",
         "static_file_max_age", "0",
         NULL };
     ctx = mg_start(NULL, 0, options);
-    
-    mg_set_websocket_handler(ctx, "/websocket", WebSocketConnectHandler, WebSocketReadyHandler, WebSocketDataHandler, WebSocektCloseHandler, 0);
-    
+    if (ctx == NULL) {
+        exit(EXIT_FAILURE);
+    }
+
+    mg_set_websocket_handler(ctx, "/websocket", WebSocketConnectHandler, WebSocketReadyHandler, WebSocketDataHandler, WebSocketCloseHandler, 0);
+
+    std::vector<struct mg_server_ports> server_ports(50);
+    mg_get_server_ports(ctx, (int)server_ports.size(), &server_ports[0]);
+    int portNumber = server_ports[0].port;
+
     char hostbuffer[256];
     gethostname(hostbuffer, sizeof(hostbuffer));
-    struct hostent *host_entry = gethostbyname(hostbuffer);
-    char *IPbuffer = inet_ntoa(*((struct in_addr*)
-                           host_entry->h_addr_list[0]));
-    
-    std::string output = "http://";
-    output += IPbuffer;
-    output += ":8080";
-    
-    std::cout << "Hosting web client on " << output << std::endl;
-    
-    return output;
+
+    struct addrinfo hints;
+    struct addrinfo* infoptr;
+    hints.ai_family = AF_INET;
+
+    getaddrinfo(hostbuffer, NULL, &hints, &infoptr);
+
+    struct addrinfo* p;
+    bool found = false;
+    for (p = infoptr; p != NULL; p = p->ai_next) {
+        getnameinfo(p->ai_addr, p->ai_addrlen, hostbuffer, sizeof(hostbuffer), NULL, 0, NI_NUMERICHOST);
+        int sfd = socket(AF_INET, SOCK_STREAM, 0);
+        if (sfd == -1) {
+            continue;
+        }
+        if (!bind(sfd, p->ai_addr, sizeof(struct sockaddr*))) {
+            continue;
+        }
+        close(sfd);
+        found = true;
+        break;
+    }
+
+    if (found) {
+        std::ostringstream output;
+        output << "http://" << hostbuffer << ":" << portNumber;
+        return output.str();
+    }
+    else {
+        exit(EXIT_FAILURE);
+    }
 }
 
 void StopWebServer() {

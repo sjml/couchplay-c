@@ -1,4 +1,9 @@
 function load() {
+    function preventDefault(e){
+      e.preventDefault();
+  }
+  document.body.addEventListener('touchmove', preventDefault, { passive: false });
+
   let wsproto = (location.protocol === 'https:') ? 'wss:' : 'ws:';
   let connection = new WebSocket(
     wsproto + '//'
@@ -18,11 +23,9 @@ function load() {
 
       function interaction(e) {
         if (e.type == 'touchstart') {
-          console.log('down ' + e.target.className);
           connection.send('down ' + e.target.className);
         }
         else if (e.type == 'touchend') {
-          console.log('up ' + e.target.className);
           connection.send('up ' + e.target.className);
         }
       }
@@ -31,7 +34,7 @@ function load() {
       red.addEventListener('touchend', interaction, true);
       blue.addEventListener('touchend', interaction, true);
 
-      playfield.appendChild(red);
+      // playfield.appendChild(red);
       playfield.appendChild(blue);
     }
   }
