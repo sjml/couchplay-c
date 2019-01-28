@@ -18,7 +18,8 @@ void InitGL() {
         exit(EXIT_FAILURE);
     }
     
-    window = glfwCreateWindow(1024, 1024, "CouchPlay", NULL, NULL);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    window = glfwCreateWindow(800, 800, "CouchPlay", NULL, NULL);
     if (!window) {
         exit(EXIT_FAILURE);
     }
