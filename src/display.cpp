@@ -4,10 +4,15 @@
 
 #include <vector>
 
+
+#if __APPLE__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdocumentation"
+#endif
 #include <GLFW/glfw3.h>
+#if __APPLE__
 #pragma clang diagnostic pop
+#endif
 
 GLFWwindow* window;
 std::vector<Actor*> actors;
@@ -60,7 +65,7 @@ void GameLoop() {
         glClearColor(bg_color[0], bg_color[1], bg_color[2], 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        for (int i=0; i < actors.size(); i++) {
+        for (unsigned int i=0; i < actors.size(); i++) {
             actors[i]->Render();
         }
         

@@ -3,10 +3,14 @@
 
 #include <string>
 
+#if __APPLE__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdocumentation"
+#endif
 #include <GLFW/glfw3.h>
+#if __APPLE__
 #pragma clang diagnostic pop
+#endif
 
 #include "display.h"
 #include "web.h"
