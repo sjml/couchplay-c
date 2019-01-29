@@ -21,16 +21,15 @@ unsigned int bindQRTexture(std::string textToEncode) {
         // TODO: error
     }
     
+    const int border = 2;
     int qrl = qrcodegen_getSize(qrCode);
-    size_t dataSize = sizeof(GLubyte) * qrl * qrl * 1;
+    size_t dataSize = sizeof(GLubyte) * (qrl + border + border) * (qrl + border + border) * 1;
     GLubyte* imageData = (GLubyte*)malloc(dataSize);
+    memset(imageData, 255, dataSize);
     for (int y = 0; y < qrl; y++) {
         for (int x = 0; x < qrl; x++) {
             if (qrcodegen_getModule(qrCode, x, y)) {
-                imageData[(y*qrl)+x] = 0;
-            }
-            else {
-                imageData[(y*qrl)+x] = 255;
+                imageData[((y+border)*(qrl+border+border))+x+border] = 0;
             }
         }
     }
@@ -49,7 +48,7 @@ unsigned int bindQRTexture(std::string textToEncode) {
     
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, qrl, qrl, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, imageData);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, qrl + border + border, qrl + border + border, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, imageData);
     free(imageData);
     
     return texRef;
