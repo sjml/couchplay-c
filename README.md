@@ -1,6 +1,6 @@
 # CouchPlay (proof of concept)
 
-([Download the Mac app](https://github.com/sjml/couchplay-c/releases/latest).)
+([Download builds](https://github.com/sjml/couchplay-c/releases/latest). The Mac version is actually compiled from this repo. Windows networking proved too annoying to figure out, so the Windows version is a Unity build that is the same functionality.)
 
 Very ugly quick-and-dirty protoype of a control/registration scheme for couch co-op video games. (Inspired by my thought of "why has nobody reproduced the original [_Crystal Chronicles_](https://en.wikipedia.org/wiki/Final_Fantasy_Crystal_Chronicles) experience using more modern tech?")
 
@@ -12,4 +12,4 @@ At the moment, it's a basic proof of concept -- the QR code stays up forever, an
 
 Imagining: being able to put in a name before registering, being able to collectively say "we're all here, start playing," distributed information about the world, etc. 
 
-Only runs on a Mac out of the box, but that's just because there's only an Xcode project. The code and third-party libraries are fairly portable. (I've had some trouble getting Windows to pick the correct IP address, though...)
+Proof-of-concept work is done, then I reproduced it in Unity for easier prototyping going forward. This repo is effectively done now.
